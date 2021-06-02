@@ -18,4 +18,4 @@ jobs:
           pip install pyTelegramBotAPI pandas numpy matplotlib seaborn
       - name: Run
         run: |
-          python3 main.py
+          python3 ./b3-checker/main.py
