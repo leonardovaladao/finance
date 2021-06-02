@@ -22,7 +22,7 @@ bot.send_message(leo_id, first_string, parse_mode="Markdown")
 
 today = str(date.today()).replace("-", "")
 
-f = open("./info.txt", "r")
+f = open("./b3-checker/info.txt", "r")
 acoes = f.readlines()
 f.close()
 
