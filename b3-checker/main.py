@@ -43,7 +43,6 @@ json_acoes = [
 
 returns = []
 c_prices = []
-sm = Stock_Model(lista_acoes, datas[0], w)
 
 for acao, j, data in zip(lista_acoes, json_acoes, datas):
     r = pd.DataFrame(j)["PREULT"].iloc[-1] / pd.DataFrame(j)["PREULT"].iloc[0] - 1
