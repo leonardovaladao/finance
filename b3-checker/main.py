@@ -11,8 +11,6 @@ import pandas as pd
 import numpy as np
 import telebot
 import matplotlib.pyplot as plt
-import seaborn as sns
-from stock_model import Stock_Model
 
 TOKEN = '1720234893:AAFBGqr4kosQzjwOd7pJbfGvYHn7epSE2fE'
 leo_id = 1570169277
