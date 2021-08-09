@@ -11,6 +11,7 @@ import pandas as pd
 import numpy as np
 import telebot
 import matplotlib.pyplot as plt
+import mplfinance as mpf
 
 TOKEN = '1720234893:AAFBGqr4kosQzjwOd7pJbfGvYHn7epSE2fE'
 leo_id = 1570169277
@@ -61,16 +62,15 @@ for acao, j, data in zip(lista_acoes, json_acoes, datas):
     bot.send_message(leo_id, var_stocks, parse_mode="Markdown")
     bot.send_message(leo_id, var_ann, parse_mode="Markdown")
     
+    
     plt.figure()
-    graph = plt.plot(
-        pd.DataFrame(j)['PREULT'].dropna() / pd.DataFrame(j)['PREULT'].dropna().iloc[0],
-        ls='--', lw=1
-    )
-    plt.grid(ls='--')
-    plt.ylabel('Standartized price of stock')
-    plt.xlabel('Days since first date')
-    plt.title('Historical Prices: {:s}'.format(acao))
-    plt.savefig("plot")
+    
+    df = pd.DataFrame(j)
+    df["DATPRG"] = pd.to_datetime(df["DATPRG"])
+    df.set_index("DATPRG", inplace=True)
+    df.columns = ['Open', 'High', 'Low', 'Med', 'Close', 'Quant', 'Volume']
+    mpf.plot(df, type='candle', mav=9, title=acao, savefig="plot.png")
+    
     with open("plot.png", "rb") as im:
         bot.send_photo(leo_id, im)
     bot.send_message(leo_id, "==================================", parse_mode="Markdown")
