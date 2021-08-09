@@ -18,7 +18,7 @@ jobs:
         run: |
           ls
           python -m pip install --upgrade pip
-          pip install pyTelegramBotAPI pandas numpy matplotlib seaborn
+          pip install pyTelegramBotAPI pandas numpy matplotlib mplfinance
       - name: Run
         run: |
           python3 ./b3-checker/main.py
